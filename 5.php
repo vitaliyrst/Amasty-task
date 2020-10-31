@@ -56,7 +56,7 @@ ORDER BY COUNT(c.name) DESC LIMIT 1
 function getTransactionBetweenSameCities()
 {
     $sql = '
-SELECT t.transaction_id, c.name as from_reson_id, cc.name as to_person_id FROM transactions as t
+SELECT t.transaction_id, c.name as city FROM transactions as t
 JOIN persons as p
 ON p.id = t.from_person_id
 JOIN cities as c
