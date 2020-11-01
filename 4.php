@@ -45,6 +45,7 @@ function findTeam($team)
         $html->load_file($link);
         $table = $html->find('div[id="container"] div.content-site div.maincol 
         div.tab table[class="colored big"] tr');
+        $season = 'Сезон: ' . $start-- . '-' . $interval--;
         foreach ($table as $td) {
             if ($td->find('td a', 0)->plaintext == null) {
                 continue;
@@ -52,7 +53,7 @@ function findTeam($team)
             if ($team !== $td->find('td a', 0)->plaintext) {
                 continue;
             }
-            $teamInfo[$team]['Сезон: ' . $start-- . '-' . $interval--] =
+            $teamInfo[$team][$season] =
                 'Место: ' . substr($td->find('td', 0)->plaintext, 0, 1) .
                 ' Количество очков: ' . $td->find('td strong', 0)->plaintext;
         }
